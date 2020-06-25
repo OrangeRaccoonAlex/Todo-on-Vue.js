@@ -2,8 +2,8 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
     <Header app-name="My first Todo with Vue" />
-    <Textfield />
-    <TodoList :items="items" />
+    <Textfield @add-todo-item="showTodo" />
+    <TodoList :items="todos" />
   </div>
 </template>
 
@@ -22,7 +22,7 @@ export default {
   },
   data() {
     return {
-      items: [
+      todos: [
         { id: 0, text: "Выучить JavaScript", isComplete: true },
         { id: 1, text: "Выучить Vue", isComplete: true },
         { id: 2, text: "Погулять", isComplete: false },
@@ -31,6 +31,24 @@ export default {
         { id: 5, text: "Поиграть в Скайрим", isComplete: false }
       ]
     };
+  },
+  methods: {
+    showTodo(content) {
+      this.todos.push(this.createTodo(content));
+    },
+    createTodo(title) {
+      let max = 0;
+      for (let i = 0; i < this.todos.length; i++) {
+        if (this.todos[i].id > max) {
+          max = this.todos[i].id + 1;
+        }
+      }
+      return {
+        isComplete: false,
+        text: title,
+        id: max
+      };
+    }
   }
 };
 </script>
