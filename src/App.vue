@@ -11,6 +11,16 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  padding: 0;
+  margin: 0;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    71deg,
+    rgba(238, 238, 238, 1) 0%,
+    rgba(240, 240, 240, 1) 35%,
+    rgba(252, 252, 252, 1) 100%
+  );
+  height: 100vh;
 }
 
 #nav {

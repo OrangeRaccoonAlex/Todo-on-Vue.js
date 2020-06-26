@@ -1,7 +1,7 @@
 <template>
-  <li>
+  <li class="todo-list-todo">
     <input type="checkbox" v-model="isComplete" />
-    <span>{{ text }}</span>
+    <div>{{ text }}</div>
   </li>
 </template>
 
@@ -29,4 +29,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.todo-list-todo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: solid 1px #ddd;
+}
+.todo-list-todo div {
+  font-size: 1.3rem;
+}
+.todo-list-todo input {
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+}
+</style>

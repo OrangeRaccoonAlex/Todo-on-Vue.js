@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
     <Header app-name="My first Todo with Vue" />
     <Textfield @add-todo-item="showTodo" />
     <TodoList :items="todos" />

@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="todo-list-list">
     <TodoListItem v-for="item in items" :key="item.id" :item="item" />
   </ul>
 </template>
@@ -17,3 +17,12 @@ export default {
   }
 };
 </script>
+<style>
+.todo-list-list {
+  width: 500px;
+  margin: 0 auto;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+</style>
