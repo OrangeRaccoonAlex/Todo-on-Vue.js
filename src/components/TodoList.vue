@@ -1,6 +1,11 @@
 <template>
   <ul class="todo-list-list">
-    <TodoListItem v-for="item in items" :key="item.id" :item="item" />
+    <TodoListItem
+      v-for="item in items"
+      :key="item.id"
+      :item="item"
+      @remove-todo-item="removeTodoOnMain"
+    />
   </ul>
 </template>
 
@@ -13,6 +18,11 @@ export default {
     items: {
       type: Array,
       default: () => []
+    }
+  },
+  methods: {
+    removeTodoOnMain(index) {
+      this.$emit("remove-todo-on-main", index);
     }
   }
 };

@@ -2,7 +2,7 @@
   <div class="home">
     <Header app-name="My first Todo with Vue" />
     <Textfield @add-todo-item="showTodo" />
-    <TodoList :items="todos" />
+    <TodoList :items="todos" @remove-todo-on-main="deleteTodo" />
   </div>
 </template>
 
@@ -28,24 +28,30 @@ export default {
         { id: 3, text: "Поиграть в шахматы", isComplete: false },
         { id: 4, text: "Приготовить вкусный ужин", isComplete: true },
         { id: 5, text: "Поиграть в Скайрим", isComplete: false }
-      ]
+      ],
+      index: null
     };
   },
   methods: {
     showTodo(content) {
       this.todos.push(this.createTodo(content));
     },
+    deleteTodo(index) {
+      this.todos = this.todos.filter(function(todo) {
+        return todo.id !== index;
+      });
+    },
     createTodo(title) {
       let max = 0;
       for (let i = 0; i < this.todos.length; i++) {
         if (this.todos[i].id > max) {
-          max = this.todos[i].id + 1;
+          max = this.todos[i].id;
         }
       }
       return {
         isComplete: false,
         text: title,
-        id: max
+        id: max + 1
       };
     }
   }
