@@ -19,7 +19,7 @@ export default {
     return {
       id: null,
       text: "",
-      isComplete: false,
+      isComplete: false
     };
   },
   created() {

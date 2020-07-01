@@ -1,0 +1,34 @@
+{
+    "todos": [
+        {
+            "id": 0,
+            "text": "Выучить JavaScript",
+            "isComplete": true
+        },
+        {
+            "id": 1,
+            "text": "Выучить Vue",
+            "isComplete": true
+        },
+        {
+            "id": 2,
+            "text": "Погулять",
+            "isComplete": false
+        },
+        {
+            "id": 3,
+            "text": "Поиграть в шахматы",
+            "isComplete": false
+        },
+        {
+            "id": 4,
+            "text": "Приготовить вкусный ужин",
+            "isComplete": true
+        },
+        {
+            "id": 5,
+            "text": "Поиграть в Скайрим",
+            "isComplete": false
+        }
+    ]
+}

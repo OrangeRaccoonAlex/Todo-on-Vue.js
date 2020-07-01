@@ -21,18 +21,33 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: 0, text: "Выучить JavaScript", isComplete: true },
-        { id: 1, text: "Выучить Vue", isComplete: true },
-        { id: 2, text: "Погулять", isComplete: false },
-        { id: 3, text: "Поиграть в шахматы", isComplete: false },
-        { id: 4, text: "Приготовить вкусный ужин", isComplete: true },
-        { id: 5, text: "Поиграть в Скайрим", isComplete: false }
-      ],
-      index: null
+      // todos: [
+      //   { id: 0, text: "Выучить JavaScript", isComplete: true },
+      //   { id: 1, text: "Выучить Vue", isComplete: true },
+      //   { id: 2, text: "Погулять", isComplete: false },
+      //   { id: 3, text: "Поиграть в шахматы", isComplete: false },
+      //   { id: 4, text: "Приготовить вкусный ужин", isComplete: true },
+      //   { id: 5, text: "Поиграть в Скайрим", isComplete: false }
+      // ],
+      index: null,
+      todos: []
     };
   },
+  created() {
+    this.getData();
+  },
   methods: {
+    getData() {
+      function getResponse(response) {
+        return response.json();
+      }
+      let setTodos = todos => {
+        this.todos = todos;
+      };
+      fetch("http://localhost:3000/todos")
+        .then(getResponse)
+        .then(setTodos);
+    },
     showTodo(content) {
       this.todos.push(this.createTodo(content));
     },
