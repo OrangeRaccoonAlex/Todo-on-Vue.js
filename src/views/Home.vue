@@ -2,7 +2,8 @@
   <div class="home">
     <Header app-name="My first Todo with Vue" />
     <Textfield @add-todo-item="showTodo" />
-    <TodoList :items="todos" @remove-todo-on-main="deleteTodo" />
+    <TodoList :items="filtration" @remove-todo-on-main="deleteTodo" />
+    <ButtonGroup @set-filter="setFilterButton" :currentFilter="filterButton" />
   </div>
 </template>
 
@@ -11,30 +12,38 @@
 import Header from "@/components/Header.vue";
 import Textfield from "@/components/Textfield.vue";
 import TodoList from "@/components/TodoList.vue";
+import ButtonGroup from "@/components/ButtonGroup.vue";
 
 export default {
   name: "Home",
   components: {
     Header,
     Textfield,
-    TodoList
+    TodoList,
+    ButtonGroup
   },
   data() {
     return {
-      // todos: [
-      //   { id: 0, text: "Выучить JavaScript", isComplete: true },
-      //   { id: 1, text: "Выучить Vue", isComplete: true },
-      //   { id: 2, text: "Погулять", isComplete: false },
-      //   { id: 3, text: "Поиграть в шахматы", isComplete: false },
-      //   { id: 4, text: "Приготовить вкусный ужин", isComplete: true },
-      //   { id: 5, text: "Поиграть в Скайрим", isComplete: false }
-      // ],
       index: null,
-      todos: []
+      todos: [],
+      filterButton: "all"
     };
   },
   created() {
     this.getData();
+  },
+  computed: {
+    filtration() {
+      switch (this.filterButton) {
+        case "active":
+          return this.todos.filter(todo => todo.isComplete === false);
+        case "completed":
+          return this.todos.filter(todo => todo.isComplete !== false);
+        case "all":
+        default:
+          return this.todos;
+      }
+    }
   },
   methods: {
     getData() {
@@ -68,6 +77,9 @@ export default {
         text: title,
         id: max + 1
       };
+    },
+    setFilterButton(filter) {
+      this.filterButton = filter;
     }
   }
 };

@@ -1,4 +1,38 @@
 body{
     margin: 0;
     padding: 0;
+    background: rgb(238, 238, 238);
+    background: linear-gradient(
+        71deg,
+        rgba(238, 238, 238, 1) 0%,
+        rgba(240, 240, 240, 1) 35%,
+        rgba(252, 252, 252, 1) 100%
+    );
+    height: 100vh;
+}
+.default-button,
+.second-default-button{
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border: solid 1px #ddd;
+    font-size: 1rem;
+    color: #555;
+    outline: none;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 1px 5px 5px rgb(227, 227, 227);
+    margin: 10px 10px 50px;
+    cursor: pointer;
+}
+.second-default-button{
+    background: #555;
+    color: #ddd;
+}
+.default-button:hover{
+    background: #555;
+    color: #ddd;
+}
+.second-default-button:hover{
+    background: transparent;
+    color: #555;
 }

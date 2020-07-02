@@ -29,6 +29,11 @@
             "id": 5,
             "text": "Поиграть в Скайрим",
             "isComplete": false
+        },
+        {
+            "id": 6,
+            "text": "Навалять Ульфрику",
+            "isComplete": false
         }
     ]
 }
