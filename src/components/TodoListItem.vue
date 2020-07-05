@@ -22,6 +22,11 @@ export default {
       isComplete: false
     };
   },
+  watch: {
+    isComplete(val) {
+      this.newTodos(val);
+    }
+  },
   created() {
     this.id = this.item.id;
     this.text = this.item.text;
@@ -30,6 +35,9 @@ export default {
   methods: {
     removeTodo(index) {
       this.$emit("remove-todo-item", index);
+    },
+    newTodos(isComplete) {
+      this.$emit("new-todos", this.id, isComplete);
     }
   }
 };

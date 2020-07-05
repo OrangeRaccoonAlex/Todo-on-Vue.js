@@ -5,6 +5,7 @@
       :key="item.id"
       :item="item"
       @remove-todo-item="removeTodoOnMain"
+      @new-todos="newArrTodos"
     />
   </ul>
 </template>
@@ -23,6 +24,9 @@ export default {
   methods: {
     removeTodoOnMain(index) {
       this.$emit("remove-todo-on-main", index);
+    },
+    newArrTodos(id, isComplete) {
+      this.$emit("update-new-todos", id, isComplete);
     }
   }
 };

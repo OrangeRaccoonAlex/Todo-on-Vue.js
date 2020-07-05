@@ -2,7 +2,11 @@
   <div class="home">
     <Header app-name="My first Todo with Vue" />
     <Textfield @add-todo-item="showTodo" />
-    <TodoList :items="filtration" @remove-todo-on-main="deleteTodo" />
+    <TodoList
+      :items="filtration"
+      @remove-todo-on-main="deleteTodo"
+      @update-new-todos="changeTodos"
+    />
     <ButtonGroup @set-filter="setFilterButton" :currentFilter="filterButton" />
   </div>
 </template>
@@ -80,7 +84,26 @@ export default {
     },
     setFilterButton(filter) {
       this.filterButton = filter;
+    },
+    changeTodos(id, isComplete) {
+      // START
+      const itemTodos = this.todos.findIndex(todo => todo.id === id);
+      const startTodos = this.todos.slice(0, itemTodos);
+      const endTodos = this.todos.slice(itemTodos + 1);
+      const newTodos = {
+        id: id,
+        text: this.todos[itemTodos].text,
+        isComplete: isComplete
+      };
+
+      // END
+      this.todos = [...startTodos, newTodos, ...endTodos];
     }
   }
+  // 1 сздать метод с аргументом id, text, isComplete
+  // 2 находить по id элемент в массиве (который я хочу изменить),
+  // забирать все что до него в отдельную переменную и забирать все что после него в отдельную переменную
+  // 3 создавать новый объект и перезаписывать массив склеивая start, объект и конец массива
+  // 4 через эмитеры передавать в todolistitem
 };
 </script>
