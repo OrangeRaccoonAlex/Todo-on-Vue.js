@@ -1,6 +1,6 @@
 <template>
   <li class="todo-list-todo">
-    <input type="checkbox" v-model="isComplete" />
+    <input type="checkbox" :value="isComplete" @input="newTodos(isComplete)" />
     <div>{{ text }}</div>
     <button @click="removeTodo(id)">×</button>
   </li>
@@ -10,27 +10,18 @@
 export default {
   name: "TodosListItem",
   props: {
-    item: {
-      required: true,
-      type: Object
+    id: {
+      type: Number,
+      required: true
+    },
+    text: {
+      type: String,
+      required: true
+    },
+    isComplete: {
+      type: Boolean,
+      required: true
     }
-  },
-  data() {
-    return {
-      id: null,
-      text: "",
-      isComplete: false
-    };
-  },
-  watch: {
-    isComplete(val) {
-      this.newTodos(val);
-    }
-  },
-  created() {
-    this.id = this.item.id;
-    this.text = this.item.text;
-    this.isComplete = this.item.isComplete;
   },
   methods: {
     removeTodo(index) {

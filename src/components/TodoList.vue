@@ -4,6 +4,9 @@
       v-for="item in items"
       :key="item.id"
       :item="item"
+      :id="item.id"
+      :text="item.text"
+      :isComplete="item.isComplete"
       @remove-todo-item="removeTodoOnMain"
       @new-todos="newArrTodos"
     />
